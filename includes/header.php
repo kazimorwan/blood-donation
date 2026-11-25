@@ -17,7 +17,8 @@ $nav_links = [
 ];
 if ($is_admin) {
     $nav_links = [
-        'doners' => ['Doners', 'admin-donors.php'],
+        'doners'   => ['Doners', 'admin-donors.php'],
+        'requests' => ['Blood Requests', 'admin-requests.php'],
     ];
 }
 ?>

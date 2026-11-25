@@ -58,13 +58,13 @@ $unverified     = $pdo->query("SELECT COUNT(*) FROM users WHERE role = 'user' AN
 $open_requests  = $pdo->query('SELECT COUNT(*) FROM donation_requests WHERE status IN (' . REQ_PENDING . ', ' . REQ_ONGOING . ', ' . REQ_ACCEPTED . ')')->fetchColumn();
 $completed      = $pdo->query('SELECT COUNT(*) FROM donation_requests WHERE status = ' . REQ_COMPLETED)->fetchColumn();
 
-$users = $pdo->query("SELECT u.*, a.name AS area_name FROM users u LEFT JOIN areas a ON a.id = u.area_id WHERE u.role = 'user' ORDER BY u.id DESC")->fetchAll();
+$users = $pdo->query("SELECT u.*, a.name AS area_name FROM users u LEFT JOIN areas a ON a.id = u.area_id WHERE u.role = 'user' ORDER BY u.id DESC LIMIT 10")->fetchAll();
 
 $requests = $pdo->query('SELECT r.*, a.name AS area_name, u.name AS seeker_name, u.mobile_no AS seeker_mobile
                          FROM donation_requests r
                          JOIN areas a ON a.id = r.area_id
                          JOIN users u ON u.id = r.blood_seeker_id
-                         ORDER BY r.id DESC LIMIT 30')->fetchAll();
+                         ORDER BY r.id DESC LIMIT 10')->fetchAll();
 
 $page_title = 'Admin';
 $active = 'admin';
@@ -85,7 +85,7 @@ require 'includes/header.php';
 
     <!-- Requests -->
     <section class="mt-8 rounded-2xl bg-white p-6 shadow-sm">
-      <h2 class="font-semibold text-gray-900">Blood requests (latest 30)</h2>
+      <h2 class="font-semibold text-gray-900">Blood requests (latest 10)</h2>
       <div class="mt-4 overflow-x-auto">
         <table class="w-full text-left text-sm">
           <thead class="border-b border-gray-100 text-gray-500">
@@ -127,7 +127,7 @@ require 'includes/header.php';
 
     <!-- Users -->
     <section class="mt-6 rounded-2xl bg-white p-6 shadow-sm">
-      <h2 class="font-semibold text-gray-900">Users</h2>
+      <h2 class="font-semibold text-gray-900">Users (latest 10)</h2>
       <div class="mt-4 overflow-x-auto">
         <table class="w-full text-left text-sm">
           <thead class="border-b border-gray-100 text-gray-500">
