@@ -16,7 +16,9 @@ $nav_links = [
     'contact'  => ['Contact', 'contact.php'],
 ];
 if ($is_admin) {
-    $nav_links = [];
+    $nav_links = [
+        'doners' => ['Doners', 'admin-donors.php'],
+    ];
 }
 ?>
 <!DOCTYPE html>
