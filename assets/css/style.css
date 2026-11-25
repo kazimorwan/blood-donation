@@ -1,0 +1,10 @@
+/* Tiny custom CSS. Everything else is Tailwind. */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Soft red glow behind the hero section */
+.hero-bg {
+  background: radial-gradient(circle at top right, #fee2e2 0%, #ffffff 55%);
+}
