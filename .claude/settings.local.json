@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(php -v)",
+      "Bash(mysql --version)",
+      "Read(//c//**)"
+    ]
+  }
+}
